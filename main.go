@@ -7,6 +7,15 @@ import (
 	"reflect"
 )
 
+// Basic functions
+func sum(a int, b int) int {
+	return a + b
+}
+
+func print(value int) {
+	fmt.Println(value)
+}
+
 // The main function is the starting point of the program
 func main() {
 
@@ -108,4 +117,98 @@ func main() {
 	bo := true
 	fmt.Printf("\nThe type of bo is: %v\n", reflect.TypeOf(bo))
 	fmt.Println(!bo)
+
+	// String
+	var str string = "Hello" // Yo can't use single quotes for strings
+	fmt.Printf("\nThe type of str is: %v\n", reflect.TypeOf(str))
+	// You can use backtick to print a string
+	str2 := `Hello
+	my name is
+	Gopher`
+	fmt.Println("The length of str2 is:", len(str2))
+
+	// You don't have a char type in Go
+	char := 'a'
+	fmt.Println("The type of char is:", reflect.TypeOf(char))
+
+	// Default zero values: https://yourbasic.org/golang/default-zero-value/
+
+	// Converting basic types to other types
+	y := 2.4
+	z := 2
+	fmt.Println(y / float64(z))
+
+	result := sum(5, 5)
+	print(result)
+
+	// Arithmetic operators
+	v1 := 3
+	v2 := 2
+	fmt.Println(v1 + v2)
+	fmt.Println(v1 - v2)
+	fmt.Println(v1 * v2)
+	fmt.Println(v1 / v2)
+	fmt.Println(v1 % v2)
+
+	// Bitwise operators
+	// https://golang.org/ref/spec#Bitwise_operators
+	fmt.Println("E => ", v1&v2)   // 11 & 10 = 10
+	fmt.Println("O => ", v1|v2)   // 11 | 10 = 11
+	fmt.Println("XOR => ", v1^v2) // 11 ^ 10 = 01
+
+	// Other operations using math package
+	fmt.Println("Absolute value of -3 is:", m.Abs(-3))
+	fmt.Println("Ceil of 3.2 is:", m.Ceil(3.2))
+	fmt.Println("Floor of 3.2 is:", m.Floor(3.2))
+	fmt.Println("Round of 3.2 is:", m.Round(3.2))
+	fmt.Println("Exponential of 3 is:", m.Pow(3, 5))
+
+	// Other Assignment operators
+	// https://golang.org/ref/spec#Assignment_operators
+	w := 3
+	w += 2
+	w -= 2
+	w *= 2
+	w /= 2
+	w %= 2
+	fmt.Println(w)
+
+	// Relational operators
+	// https://golang.org/ref/spec#Relational_operators
+	fmt.Println("3 > 2 is:", 3 > 2)
+	fmt.Println("3 < 2 is:", 3 < 2)
+	fmt.Println("3 == 2 is:", 3 == 2)
+	fmt.Println("3 != 2 is:", 3 != 2)
+	fmt.Println("3 >= 2 is:", 3 >= 2)
+	fmt.Println("3 <= 2 is:", 3 <= 2)
+
+	// Logic operators
+	// https://golang.org/ref/spec#Logical_operators
+	fmt.Println("true && true is:", true && true)
+	fmt.Println("true && false is:", true && false)
+	fmt.Println("true || true is:", true || true)
+	fmt.Println("true || false is:", true || false)
+	fmt.Println("!true is:", !true)
+
+	// Unary operators
+	// https://golang.org/ref/spec#Unary_operators
+
+	// Go doesn't have a ternary operator but you can use if-else
+	amount := 64
+	if amount < 50 {
+		fmt.Println("You are not a VIP")
+	} else {
+		fmt.Println("You are a VIP")
+	}
+
+	// Pointers in Go
+	o := 20
+	var p *int = nil
+	p = &o // Get the address of the variable
+	*p++   // Dereference the pointer to get the value
+	o++
+	// p++ There is no pointer arithmetic in Go
+	// https://stackoverflow.com/a/32701024/8273185
+	fmt.Println(p, *p, &o)
+
 }
